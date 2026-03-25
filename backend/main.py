@@ -12,7 +12,7 @@ from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field, field_validator
 
-# Initialize FastAPI app
+
 app = FastAPI(
     title="Diabetes Prediction API",
     description="A machine learning API for predicting diabetes risk based on health metrics",
@@ -21,16 +21,15 @@ app = FastAPI(
     redoc_url="/redoc",
 )
 
-# CORS middleware for frontend connection
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Allow all origins for deployment
+    allow_origins=["*"],  
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-# Load model and scaler
+
 MODEL_PATH = Path(__file__).parent / "models" / "diabetes_model.sav"
 SCALER_PATH = Path(__file__).parent / "models" / "scaler.sav"
 
